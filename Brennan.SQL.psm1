@@ -3,7 +3,7 @@ $PublicPath = "$PSScriptRoot\Public\*.ps1"
 $PrivatePath = "$PSScriptRoot\Private\*.ps1"
 
 # Check & Import Public
-If (   $True -eq [Boolean]$(Test-Path -Path $PublicPath -ErrorAction SilentlyContinue)   ) {
+If ( $True -eq [Boolean]$(Test-Path -Path $PublicPath -ErrorAction SilentlyContinue) ) {
     [Array]$Public  = $(Get-ChildItem -Path $PublicPath -ErrorAction SilentlyContinue)
     If ($Null -ne $Public) {
         ForEach($Import in $Public | Sort-Object -Descending -Property Name) {
@@ -21,7 +21,7 @@ If (   $True -eq [Boolean]$(Test-Path -Path $PublicPath -ErrorAction SilentlyCon
 }
 
 # Check & Import Private
-If (   $True -eq [Boolean]$(Test-Path -Path $PrivatePath -ErrorAction SilentlyContinue)   ) {
+If ( $True -eq [Boolean]$(Test-Path -Path $PrivatePath -ErrorAction SilentlyContinue) ) {
     [Array]$Private = $(Get-ChildItem -Path $PrivatePath -ErrorAction SilentlyContinue)
     If ($Null -ne $Private) {
         ForEach($Import in $Private) {
