@@ -36,23 +36,3 @@ If (   $True -eq [Boolean]$(Test-Path -Path $PrivatePath -ErrorAction SilentlyCo
         }
     }
 }
-
-<#
-Try {
-    $script_name = "Abacus-SQL"
-    $logname = "Abacus-SQL.log"
-    $audit_logroot = "\\service02.corp\DFS\SHARES\PSAuditLogs\"
-    $log_logroot = "C:\PSlogs"
-
-    $audit_logpath = Join-Path $(Join-Path $audit_logRoot $script_name) $logname
-    $log_logpath = Join-Path $(Join-Path $log_logroot $script_name) $logname
-
-    Write-Host "audit_logpath: " $audit_logpath
-    Write-Host "log_logpath: " $log_logpath
-
-    $SQLLog = Start-Log -LogPath $log_logpath -ScriptName $script_name -Audit True -AuditLogPath $audit_logpath -Global False
-}
-Catch{
-    Throw "Failed to initiate log $($PortalLogObject | Out-String) `n($_.exception)"
-}
-#>
