@@ -67,19 +67,23 @@ function Invoke-ADOcmd {
         ### Create Database Connection String
         ###----------------------------------
         $ConnectionString = "Data Source=$ServerInstance;Initial Catalog=$Database;Integrated Security=true;"
+        
         ### Open DB Connection
         ###----------------------------------
         $Connection = New-Object System.Data.SqlClient.SqlConnection
         $Connection.ConnectionString = $ConnectionString
         $Connection.Open()
+        
         ### SQL Command
         ###----------------------------------
         $SQLCommand = New-Object System.Data.SqlClient.SqlCommand
         $SQLCommand.Connection = $Connection
         $SQLCommand.CommandText = $Query
+        
         # Create Exit Code Object 
         ###----------------------------------
         $Status = New-Object PSObject -Property @{ExitCode = ""}
+        
         # Set Query Type
         ###----------------------------------
         if((($Query.ToUpper()).Trim()).StartsWith("SELECT")){
